@@ -9,10 +9,14 @@ function SignupScreen() {
     const [isAuthenticating, setisAuthenticating] = useState(false)
 
     async function signUpHandler({ email, password }) {
-        setisAuthenticating(true)
-        createUser(email, password)
-        // Backend is really quick: use line below to test the LoadingOverlay
-        // await new Promise((r) => setTimeout(r, 5000))
+        try {
+            setisAuthenticating(true)
+            createUser(email, password)
+            // Backend is really quick: use line below to test the LoadingOverlay
+            // await new Promise((r) => setTimeout(r, 5000))
+        } catch (error) {
+            Alert.alert('SignUp failed', 'Please try again later')
+        }
         setisAuthenticating(false)
     }
 

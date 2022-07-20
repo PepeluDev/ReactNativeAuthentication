@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Alert } from 'react-native'
 
 import AuthContent from '../components/Auth/AuthContent'
 import LoadingOverlay from '../components/ui/LoadingOverlay'
@@ -9,10 +10,17 @@ function LoginScreen() {
     const [isAuthenticating, setisAuthenticating] = useState(false)
 
     async function signInHandler({ email, password }) {
-        setisAuthenticating(true)
-        login(email, password)
-        // Backend is really quick: use line below to test the LoadingOverlay
-        // await new Promise((r) => setTimeout(r, 5000))
+        try {
+            setisAuthenticating(true)
+            login(email, password)
+            // Backend is really quick: use line below to test the LoadingOverlay
+            // await new Promise((r) => setTimeout(r, 5000))
+        } catch (error) {
+            Alert.alert(
+                'Authentication failed',
+                'Please check your credentials or try again later'
+            )
+        }
         setisAuthenticating(false)
     }
 
