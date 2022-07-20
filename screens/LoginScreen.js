@@ -23,8 +23,8 @@ function LoginScreen() {
                 'Authentication failed',
                 'Please check your credentials or try again later'
             )
+            setisAuthenticating(false)
         }
-        setisAuthenticating(false)
     }
 
     if (isAuthenticating) {

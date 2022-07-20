@@ -19,8 +19,8 @@ function SignupScreen() {
             authCtx.authenticate(token)
         } catch (error) {
             Alert.alert('SignUp failed', 'Please try again later')
+            setisAuthenticating(false)
         }
-        setisAuthenticating(false)
     }
 
     if (isAuthenticating) {
