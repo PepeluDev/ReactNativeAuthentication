@@ -12,16 +12,6 @@ export const AuthContext = createContext({
 function AuthContextProvider({ children }) {
     const [authToken, setAuthToken] = useState()
 
-    useEffect(() => {
-        async function retrieveTokenFromStorage() {
-            const token = await AsyncStorage.getItem('token')
-            if (token) {
-                setAuthToken(token)
-            }
-        }
-        retrieveTokenFromStorage()
-    }, [])
-
     function authenticate(token) {
         setAuthToken(token)
         // It should always be a string
