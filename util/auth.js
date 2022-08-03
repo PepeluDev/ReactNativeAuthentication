@@ -16,6 +16,7 @@ async function authenticate(mode, email, password) {
         password: password,
         returnSecureToken: true,
     })
+    // It would be good to also store the refreshToken
     const token = response.data.idToken
     return token
 }
